@@ -32,10 +32,23 @@
 	</form>
 </div>
 
+
+
+
+<span id="all"></span>
+
+
+
+
+
+
+
+
 	<script type="text/javascript" src="jquery.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
+			loadData();
 			$('#submit').click(function(event) {
 				event.preventDefault();
 				$.ajax({
@@ -45,10 +58,37 @@
 					dataType: "text",
 					success: function(notify) {
 						$('#notification').text(notify);
+						loadData();
 					}
 				});
 			});
 		});
+
+
+		function loadData(){
+			$.ajax({
+                   url: "load.php",
+                   dataType: "html",
+                   success: function(Result) {
+                       $("#all").html(Result);
+
+					   //alert(Result);
+                   } 
+                });
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+
 	</script>
 
 
